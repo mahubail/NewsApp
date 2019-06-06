@@ -8,11 +8,11 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 newsData:any;
-country;
-category;
+country="us";
+category="general";
+params;
 
 countryList = [
-{"name":"Any","val":"any"},
 {"name":"Argentina","val":"ar"},
 {"name":"Australia","val":"au"},
 {"name":"Austria","val":"at"},
@@ -68,14 +68,34 @@ countryList = [
 {"name":"Venuzuela","val":"ve"}
 ];
 
-categoryList;
+categoryList = [
+  {"name":"General","val":"general"},
+  {"name":"Business","val":"business"},
+  {"name":"Entertainment", "val":"entertainment"},
+  {"name":"Health", "val":"health"},
+  {"name":"Science", "val":"science"},
+  {"name":"Sports", "val":"sports"},
+  {"name":"Technology", "val":"technology"},
+ ];
+
 
   constructor(public navCtrl: NavController, private newsProvider:NewsProvider) {
 
     this.newsProvider.getNews("topHeadlines","country=us&category=general").subscribe(
       data=>{this.newsData=data;
         console.log(this.newsData);
-       // console.log(this.newsData.articles);
+        console.log(this.newsData.articles);
+    
+  })
+  }
+
+  onChange()
+  {
+    this.params="country=" + this.country + "&category=" + this.category;
+    this.newsProvider.getNews("topHeadlines", this.params).subscribe(
+      data=>{this.newsData=data;
+        console.log(this.newsData);
+        console.log(this.newsData.articles);
     
   })
   }

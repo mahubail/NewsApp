@@ -6,6 +6,26 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-
+<ion-content *ngIf="newsData"  padding>
+  <ion-list>
+    <ion-list-header></ion-list-header>
+      <ion-item>
+      <ion-label>Country</ion-label>
+      <ion-select placeholder="Select country" [(ngModel)]="country" (ionChange)="onChange()">
+        <ion-option *ngFor="let ctr of countryList" value="{{ctr.val}}">{{ctr.name}}</ion-option>
+    
+      </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label>Category</ion-label>
+        <ion-select placeholder="Select category" [(ngModel)]="category" (ionChange)="onChange()">
+          <ion-option *ngFor="let ctg of categoryList"  value="{{ctg.val}}">{{ctg.name}}</ion-option>
+        </ion-select>
+    </ion-item>
+    <ion-item style="text-align: center">
+      <ion-badge color="danger">
+        <p>{{newsData.totalResults}}</p>
+      </ion-badge>
+    </ion-item>
+    </ion-list>
 </ion-content>
