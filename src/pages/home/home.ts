@@ -7,9 +7,13 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
+newsData:any;
+  constructor(public navCtrl: NavController, private newsProvider:NewsProvider) {
 
-  constructor(public navCtrl: NavController, private news:NewsProvider) {
-
+    this.newsProvider.getNews("topHeadlines","country=us&category=general").subscribe(
+      data=>{this.newsData=data;
+        console.log(this.newsData);
+    
+  })
   }
-
 }
