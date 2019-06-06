@@ -99,4 +99,9 @@ categoryList = [
     
   })
   }
+
+  adjustDateTime(dateTime:string)
+  {
+    return dateTime.substring(0,10) + " " + dateTime.substring(11,16) + " GMT";
+  }
 }
