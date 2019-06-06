@@ -13,6 +13,7 @@ newsData:any;
     this.newsProvider.getNews("topHeadlines","country=us&category=general").subscribe(
       data=>{this.newsData=data;
         console.log(this.newsData);
+       // console.log(this.newsData.articles);
     
   })
   }
