@@ -22,11 +22,11 @@
           <ion-option *ngFor="let ctg of categoryList"  value="{{ctg.val}}">{{ctg.name}}</ion-option>
         </ion-select>
     </ion-item>
-    <ion-item style="text-align: center">
-      <ion-badge color="danger">
+     <!--<ion-item style="text-align: center">
+     <ion-badge color="danger">
         <p>{{newsData.totalResults}}</p>
       </ion-badge>
-    </ion-item>
+    </ion-item>-->
     </ion-list>
 
     <ion-card *ngFor="let item of newsData?.articles">
@@ -34,7 +34,7 @@
       <img [src]="item.urlToImage">
      
         <ion-item>
-         <ion-icon name="share" slot="start"></ion-icon>
+         <ion-icon color="secondary" name="share" slot="start"></ion-icon>
           
           
         </ion-item>
@@ -42,9 +42,9 @@
         <ion-card-content ion-margin >
                 
   
-          <ion-card-title color="success">{{item.title}}</ion-card-title>
+          <ion-card-title color="success"><b>{{item.title}}</b></ion-card-title>
           <p>{{item.description}}</p>
-          <p><i>{{adjustDateTime(item.publishedAt)}}</i></p>
+          <h6><i>{{adjustDateTime(item.publishedAt)}}</i></h6>
           <p><a [href]="item.url" color="danger">View more details at {{item.source.name}}</a></p>
         </ion-card-content>
       </ion-card>

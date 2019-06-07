@@ -25,7 +25,7 @@ export class NewsProvider {
       //return "";
       return this.http.get(this.topHeadlinesUrl+ params + this.apiKey);
     }
-    else
+    else if(newsType=="everything")
     {
 
     }
