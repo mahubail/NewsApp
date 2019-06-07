@@ -1,3 +1,4 @@
+import { NewsProvider } from './../../providers/news/news';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
@@ -13,12 +14,58 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'search.html',
 })
 export class SearchPage {
+searchValue:string;
+newsData:any;
+languageList=[
+  {"name":"Arabic","val":"ar"},
+  {"name":"German","val":"de"},
+  {"name":"English","val":"en"},
+  {"name":"Spanish","val":"es"},
+  {"name":"French","val":"fr"},
+  {"name":"Italina","val":"it"},
+  {"name":"Dutch","val":"nl"},
+  {"name":"Norwegian","val":"no"},
+  {"name":"Portuguese","val":"pt"},
+  {"name":"Russian","val":"ru"},
+  {"name":"Chinese","val":"zh"},
+];
+language="en";
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+sortByList=[
+  {"name":"Relevant","val":"relevancy"},
+  {"name":"Popularity","val":"popularity"},
+  {"name":"Newest first","val":"publishedAt"},
+];
+
+sortBy="publishedAt";
+
+params;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private newsProvider:NewsProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SearchPage');
   }
+  doSearch()
+  {
+    if(this.searchValue != null)
+    {
+      this.searchValue = this.searchValue.trim();
+    
+      if(this.searchValue != "")
+      {
+        console.log(this.searchValue);
+        this.params="q=" + this.searchValue + "&language=" + this.language + "&sortBy=" + this.sortBy;
+        this.newsProvider.getNews("search", this.params).subscribe(
+          data=>{this.newsData=data;
+            console.log(this.newsData);
+            console.log(this.newsData.articles)});
+        }
+    }
+  }
 
+  languageChange()
+  {
+    console.log(this.language);
+  }
 }

@@ -11,5 +11,21 @@
 </ion-header>
 
 <ion-content padding>
-
+  
+ <ion-list>
+    <!--<ion-list-header></ion-list-header>-->
+    <ion-searchbar show-cancel-button="true" cancelButtonText="Custom Cancel" placeholder="search..." animated="true" (ionChange)="doSearch()" [(ngModel)]="searchValue" ></ion-searchbar>
+      <ion-item>
+      <ion-label>Language</ion-label>
+      <ion-select placeholder="Select country" [(ngModel)]="language" (ionChange)="doSearch()">
+        <ion-option *ngFor="let lng of languageList" value="{{lng.val}}">{{lng.name}}</ion-option>
+      </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Sort by</ion-label>
+        <ion-select placeholder="Sort by" [(ngModel)]="sortBy" (ionChange)="doSearch()">
+          <ion-option *ngFor="let srt of sortByList" value="{{srt.val}}">{{srt.name}}</ion-option>
+        </ion-select>
+        </ion-item>
+  </ion-list>
 </ion-content>

@@ -1,3 +1,4 @@
+import { SearchPage } from './../pages/search/search';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -13,7 +14,8 @@ import { NewsProvider } from '../providers/news/news';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    SearchPage
   ],
   imports: [
     BrowserModule, HttpClientModule,
@@ -22,7 +24,8 @@ import { NewsProvider } from '../providers/news/news';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    SearchPage
   ],
   providers: [
     StatusBar,

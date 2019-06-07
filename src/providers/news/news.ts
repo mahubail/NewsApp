@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class NewsProvider {
   topHeadlinesUrl="https://newsapi.org/v2/top-headlines?";
-  //apiUrl="https://newsapi.org/v2/everything?country=us&apiKey=";
+  searchUrl="https://newsapi.org/v2/everything?";
   apiKey="&apiKey=8611252c534648fb8ce7be2cc3472f78";
   constructor(public http: HttpClient) {
     console.log('Hello NewsProvider Provider');
@@ -25,9 +25,9 @@ export class NewsProvider {
       //return "";
       return this.http.get(this.topHeadlinesUrl+ params + this.apiKey);
     }
-    else if(newsType=="everything")
+    else if(newsType=="search")
     {
-
+      return this.http.get(this.searchUrl+ params + this.apiKey);
     }
 
   }

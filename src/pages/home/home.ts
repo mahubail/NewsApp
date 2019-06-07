@@ -1,3 +1,4 @@
+import { SearchPage } from './../search/search';
 import { NewsProvider } from './../../providers/news/news';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
@@ -103,6 +104,11 @@ categoryList = [
   adjustDateTime(dateTime:string)
   {
     return dateTime.substring(0,10) + " " + dateTime.substring(11,16) + " GMT";
+  }
+
+  goToSearch()
+  {
+    this.navCtrl.push(SearchPage);
   }
 
 
