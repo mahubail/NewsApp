@@ -37,7 +37,7 @@ sortByList=[
   {"name":"Newest first","val":"publishedAt"},
 ];
 
-sortBy="publishedAt";
+sortBy="relevancy";
 
 params;
   constructor(public navCtrl: NavController, public navParams: NavParams, private newsProvider:NewsProvider) {
@@ -50,9 +50,9 @@ params;
   {
     if(this.searchValue != null)
     {
-      this.searchValue = this.searchValue.trim();
+      //this.searchValue = this.searchValue.trim();
     
-      if(this.searchValue != "")
+      if(this.searchValue.trim() != "")
       {
         console.log(this.searchValue);
         this.params="q=" + this.searchValue + "&language=" + this.language + "&sortBy=" + this.sortBy;
@@ -68,4 +68,10 @@ params;
   {
     console.log(this.language);
   }
+
+  adjustDateTime(dateTime:string)
+  {
+    return dateTime.substring(0,10) + " " + dateTime.substring(11,16) + " GMT";
+  }
+
 }

@@ -6,7 +6,7 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>search</ion-title>
+    <ion-title style="text-align: center">Search</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -28,4 +28,28 @@
         </ion-select>
         </ion-item>
   </ion-list>
+  <ion-card *ngFor="let item of newsData?.articles">
+     
+    <img [src]="item.urlToImage" *ngIf="item.urlToImage" >
+   
+     <!-- <ion-item>
+       <ion-icon color="secondary" name="share" slot="start"></ion-icon>        
+        
+      </ion-item>-->
+    
+      <ion-card-content ion-margin >
+ 
+        <ion-card-title color="success"><b>{{item.title}}</b></ion-card-title>
+        <p>{{item.description}}</p>
+        
+        <h6 class="dateTime"><i>{{adjustDateTime(item.publishedAt)}}</i></h6>
+        <br>
+        <p><a class="websiteLink" [href]="item.url" color="danger"><ion-icon name="globe"></ion-icon>View more details at {{item.source.name}}</a></p>
+        <ion-chip outline="true">
+            <ion-icon name="globe"></ion-icon>
+          <ion-label>View more details at {{item.source.name}}</ion-label>
+          
+        </ion-chip>
+      </ion-card-content>
+    </ion-card>
 </ion-content>
