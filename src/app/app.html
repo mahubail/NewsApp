@@ -1,1 +1,21 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu persistent="true" #sideMenu [content]="mycontent" type="push" menuId="sideMenu" side="start">
+    <ion-content padding>
+
+
+      <ion-list ion-padding>
+          <ion-item (click)="onClick(sideMenu, 'HomePage')">
+              <ion-icon padding name="home" color="dark"></ion-icon> 
+              <span ion-label color="dark">Home</span>
+          </ion-item>
+          <ion-item (click)="onClick(sideMenu, 'SearchPage')">
+              <ion-icon padding name="search" color="dark"></ion-icon> 
+              <span ion-label color="dark">Search</span>
+          </ion-item>
+          <ion-item (click)="onClick(sideMenu, 'AboutPage')">
+              <ion-icon padding name="information-circle" color="dark"></ion-icon> 
+              <span ion-label color="dark">About</span>
+          </ion-item>
+ </ion-list>
+    </ion-content>
+  </ion-menu>
+<ion-nav #mycontent [root]="rootPage"></ion-nav>

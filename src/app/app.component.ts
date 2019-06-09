@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { SearchPage } from './../pages/search/search';
+//import { MyApp } from './app.component';
+import { Component, ViewChild } from '@angular/core';
+import { Platform, NavController, Nav, MenuController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -8,6 +10,7 @@ import { HomePage } from '../pages/home/home';
   templateUrl: 'app.html'
 })
 export class MyApp {
+  @ViewChild(Nav) nav: Nav;
   rootPage:any = HomePage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
@@ -17,6 +20,32 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
+  }
+
+  onClick(item, page)
+  {
+    console.log("got to " + page + " page");
+    
+    item.close();
+console.log("Length of nav stack: " + this.nav.length());
+    for ( let i=0; i < this.nav.length(); i++ )
+      {
+          let v = this.nav.getViews()[i];
+          
+          console.log(v.component.name);
+          if(v.component.name==page)
+          {
+            this.nav.setRoot(v);
+            return;
+          }
+      }
+    //not found
+    console.log("not found");
+    if(page=="HomePage")
+      this.nav.push(HomePage);
+    else if(page=="SearchPage")
+      this.nav.push(SearchPage);
+
   }
 }
 

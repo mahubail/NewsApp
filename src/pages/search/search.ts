@@ -1,6 +1,6 @@
 import { NewsProvider } from './../../providers/news/news';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, MenuController } from 'ionic-angular';
 
 /**
  * Generated class for the SearchPage page.
@@ -40,7 +40,7 @@ sortByList=[
 sortBy="relevancy";
 
 params;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private newsProvider:NewsProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private newsProvider:NewsProvider, private menuCtrl:MenuController) {
   }
 
   ionViewDidLoad() {
@@ -73,5 +73,8 @@ params;
   {
     return dateTime.substring(0,10) + " " + dateTime.substring(11,16) + " GMT";
   }
-
+  openMenu() {
+    this.menuCtrl.open();
+  
+}
 }

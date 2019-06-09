@@ -1,7 +1,7 @@
 import { SearchPage } from './../search/search';
 import { NewsProvider } from './../../providers/news/news';
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, MenuController } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
@@ -80,7 +80,7 @@ categoryList = [
  ];
 
 
-  constructor(public navCtrl: NavController, private newsProvider:NewsProvider) {
+  constructor(public navCtrl: NavController, private newsProvider:NewsProvider, private menuCtrl:MenuController) {
 
     this.newsProvider.getNews("topHeadlines","country=us&category=general").subscribe(
       data=>{this.newsData=data;
@@ -111,5 +111,7 @@ categoryList = [
     this.navCtrl.push(SearchPage);
   }
 
-
+  openMenu() {
+    this.menuCtrl.open();
+  }
 }

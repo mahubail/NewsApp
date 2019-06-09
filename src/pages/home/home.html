@@ -1,15 +1,16 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar hideBackButton>
+      <ion-icon name="menu" color="dark" (click)="openMenu()" style="vertical-align: middle; line-height: 55px; font-size: 25px;float: left; padding-left: 15px"></ion-icon>
     <ion-title style="text-align: center">
-  <h3>Top Headlines</h3>
+  <h3>Top Headlines!</h3>
     </ion-title>
-    <ion-label (click)="goToSearch()">search</ion-label>
+    <!--<ion-label (click)="goToSearch()">search</ion-label>-->
   </ion-navbar>
 </ion-header>
 
-<ion-content *ngIf="newsData"  padding>
-  <ion-list>
-    <ion-list-header></ion-list-header>
+<ion-content *ngIf="newsData"  padding style="margin-top:50px">
+  <ion-list style="border-top:none">
+    <!--<ion-list-header></ion-list-header>-->
       <ion-item>
       <ion-label>Country</ion-label>
       <ion-select placeholder="Select country" [(ngModel)]="country" (ionChange)="onChange()">
