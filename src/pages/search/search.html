@@ -14,16 +14,21 @@
 </ion-header>
 
 <ion-content padding>
-  
+  <!-- This page will show articles based on a search result -->
  <ion-list>
-    <!--<ion-list-header></ion-list-header>-->
+    
+  <!-- ion-search component will holds the search keywords and it is binded to searchValue variable-->
     <ion-searchbar show-cancel-button="true" cancelButtonText="Custom Cancel" placeholder="search..." animated="true" (ionChange)="doSearch()" [(ngModel)]="searchValue" ></ion-searchbar>
+
+<!-- This ion-select is used to choose the language of search results articles and it is binded with language variable. Languages are loaded by ngFor directive from languageList variable.   -->
       <ion-item>
       <ion-label>Language</ion-label>
       <ion-select placeholder="Select country" [(ngModel)]="language" (ionChange)="doSearch()">
         <ion-option *ngFor="let lng of languageList" value="{{lng.val}}">{{lng.name}}</ion-option>
       </ion-select>
       </ion-item>
+
+      <!-- This ion-select is used to choose the sorting option of search results articles and it is binded with sortBy variable. Sorting options are loaded by ngFor directive from sortByList variable.   -->
       <ion-item>
         <ion-label>Sort by</ion-label>
         <ion-select placeholder="Sort by" [(ngModel)]="sortBy" (ionChange)="doSearch()">
@@ -31,29 +36,30 @@
         </ion-select>
         </ion-item>
   </ion-list>
+
+    <!-- 
+      Search result Articles and its details are viewed in ion-card component. 
+      newsData has all the articles loaded through the API and it is loaded in the ion-card through the ngFor directive.
+
+      One ion-card contains the following:
+      1. Article image 
+      2. Article title
+      3. Article date and time
+      4. Article description
+      5. Link to the original source
+    
+    -->
   <ion-card *ngFor="let item of newsData?.articles">
      
     <img [src]="item.urlToImage" *ngIf="item.urlToImage" >
    
-     <!-- <ion-item>
-       <ion-icon color="secondary" name="share" slot="start"></ion-icon>        
-        
-      </ion-item>-->
-    
+   
       <ion-card-content ion-margin >
           <ion-card-title><b>{{item.title}}</b></ion-card-title>
           
           <p style="font-size:11px; margin-top:7px">{{adjustDateTime(item.publishedAt)}}</p>
           <p>{{item.description}}</p>
           <p style="margin-top:7px"><a class="websiteLink" [href]="item.url"><ion-icon name="globe" style="margin-right: 5px"></ion-icon>View more details at {{item.source.name}}</a></p>
- <!--
-        <ion-card-title><b>{{item.title}}</b></ion-card-title>
-        <p>{{item.description}}</p>
-        
-        <h6 class="dateTime"><i>{{adjustDateTime(item.publishedAt)}}</i></h6>
-        <br>
-        <p><a class="websiteLink" [href]="item.url" color="danger"><ion-icon name="globe"></ion-icon>View more details at {{item.source.name}}</a></p>
- -->
       </ion-card-content>
     </ion-card>
 </ion-content>

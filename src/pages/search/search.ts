@@ -14,8 +14,11 @@ import { NavController, NavParams, MenuController } from 'ionic-angular';
   templateUrl: 'search.html',
 })
 export class SearchPage {
-searchValue:string;
-newsData:any;
+
+searchValue:string; //holds the keywords entered by the user
+newsData:any; //stores data from API
+
+
 languageList=[
   {"name":"Arabic","val":"ar"},
   {"name":"German","val":"de"},
@@ -29,7 +32,8 @@ languageList=[
   {"name":"Russian","val":"ru"},
   {"name":"Chinese","val":"zh"},
 ];
-language="en";
+
+language="en"; //binded to ion-select with initial value of English language
 
 sortByList=[
   {"name":"Relevant","val":"relevancy"},
@@ -37,9 +41,10 @@ sortByList=[
   {"name":"Newest first","val":"publishedAt"},
 ];
 
-sortBy="relevancy";
+sortBy="relevancy"; //binded to ion-select with initial value of Relevant sorting option
 
-params;
+params; //used to combine the parameters that are passed to the provider
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private newsProvider:NewsProvider, private menuCtrl:MenuController) {
     
   }
@@ -47,6 +52,10 @@ params;
   ionViewDidLoad() {
     console.log('ionViewDidLoad SearchPage');
   }
+
+  /* this function will be called in case search value, language, or sorting option changed.
+  it will load data from the news provider.
+  */
   doSearch()
   {
     if(this.searchValue != null)
@@ -70,12 +79,15 @@ params;
     console.log(this.language);
   }
 
+// this function formats the date and time representation
   adjustDateTime(dateTime:string)
   {
     return dateTime.substring(0,10) + " " + dateTime.substring(11,16) + " GMT";
   }
-  openMenu() {
+
+  //this function used to open the side ion-menu
+  openMenu() 
+  {
     this.menuCtrl.open();
-  
-}
+  }
 }
