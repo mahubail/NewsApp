@@ -11,10 +11,10 @@ import { NavController, MenuController } from 'ionic-angular';
 export class HomePage {
 
 
-newsData:any;
-country="us";
-category="general";
-params;
+newsData:any; //stores data from API
+country="us"; //binded to ion-select with initial value of United States country
+category="general"; //binded to ion-select with initial value of General
+params; //used to combine the parameters that are passed to the provider
 
 
 countryList = [
@@ -86,6 +86,7 @@ categoryList = [
 
   constructor(public navCtrl: NavController, private newsProvider:NewsProvider, private menuCtrl:MenuController) {
 
+    //calling the provider at the loading
     this.newsProvider.getNews("topHeadlines","country=us&category=general").subscribe(
       data=>{this.newsData=data;
         console.log(this.newsData);
@@ -94,6 +95,7 @@ categoryList = [
   })
   }
 
+  //if any option change (country or category), params are passed to the provider to refresh the newsData
   onChange()
   {
     this.params="country=" + this.country + "&category=" + this.category;
@@ -105,6 +107,7 @@ categoryList = [
   })
   }
 
+  // this function formats the date and time representation
   adjustDateTime(dateTime:string)
   {
     return dateTime.substring(0,10) + " " + dateTime.substring(11,16) + " GMT";
@@ -115,6 +118,7 @@ categoryList = [
     this.navCtrl.push(SearchPage);
   }
 
+  //this function used to open the side ion-menu
   openMenu() {
     this.menuCtrl.open();
   }
