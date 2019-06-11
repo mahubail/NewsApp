@@ -41,18 +41,19 @@
       </ion-item>-->
     
       <ion-card-content ion-margin >
- 
-        <ion-card-title color="success"><b>{{item.title}}</b></ion-card-title>
+          <ion-card-title><b>{{item.title}}</b></ion-card-title>
+          
+          <p style="font-size:11px; margin-top:7px">{{adjustDateTime(item.publishedAt)}}</p>
+          <p>{{item.description}}</p>
+          <p style="margin-top:7px"><a class="websiteLink" [href]="item.url"><ion-icon name="globe" style="margin-right: 5px"></ion-icon>View more details at {{item.source.name}}</a></p>
+ <!--
+        <ion-card-title><b>{{item.title}}</b></ion-card-title>
         <p>{{item.description}}</p>
         
         <h6 class="dateTime"><i>{{adjustDateTime(item.publishedAt)}}</i></h6>
         <br>
         <p><a class="websiteLink" [href]="item.url" color="danger"><ion-icon name="globe"></ion-icon>View more details at {{item.source.name}}</a></p>
-        <ion-chip outline="true">
-            <ion-icon name="globe"></ion-icon>
-          <ion-label>View more details at {{item.source.name}}</ion-label>
-          
-        </ion-chip>
+ -->
       </ion-card-content>
     </ion-card>
 </ion-content>

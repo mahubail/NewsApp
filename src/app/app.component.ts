@@ -1,3 +1,4 @@
+import { AboutPage } from './../pages/about/about';
 import { SearchPage } from './../pages/search/search';
 //import { MyApp } from './app.component';
 import { Component, ViewChild } from '@angular/core';
@@ -11,6 +12,7 @@ import { HomePage } from '../pages/home/home';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
+  
   rootPage:any = HomePage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
@@ -21,13 +23,23 @@ export class MyApp {
       splashScreen.hide();
     });
   }
-
   onClick(item, page)
+  {
+    item.close();
+    if(page=="HomePage")
+      this.nav.push(HomePage);
+    else if(page=="SearchPage")
+      this.nav.push(SearchPage);
+      else if(page=="AboutPage")
+      this.nav.push(AboutPage);
+
+  }
+  onClick1(item, page)
   {
     console.log("got to " + page + " page");
     
     item.close();
-console.log("Length of nav stack: " + this.nav.length());
+    console.log("Length of nav stack: " + this.nav.length());
     for ( let i=0; i < this.nav.length(); i++ )
       {
           let v = this.nav.getViews()[i];
@@ -45,6 +57,8 @@ console.log("Length of nav stack: " + this.nav.length());
       this.nav.push(HomePage);
     else if(page=="SearchPage")
       this.nav.push(SearchPage);
+      else if(page=="AboutPage")
+      this.nav.push(AboutPage);
 
   }
 }

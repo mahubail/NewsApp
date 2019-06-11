@@ -7,11 +7,15 @@ import { NavController, MenuController } from 'ionic-angular';
   selector: 'page-home',
   templateUrl: 'home.html'
 })
+
 export class HomePage {
+
+
 newsData:any;
 country="us";
 category="general";
 params;
+
 
 countryList = [
 {"name":"Argentina","val":"ar"},
@@ -86,7 +90,7 @@ categoryList = [
       data=>{this.newsData=data;
         console.log(this.newsData);
         console.log(this.newsData.articles);
-    
+       
   })
   }
 
@@ -97,7 +101,7 @@ categoryList = [
       data=>{this.newsData=data;
         console.log(this.newsData);
         console.log(this.newsData.articles);
-    
+  
   })
   }
 

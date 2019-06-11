@@ -1,3 +1,4 @@
+import { AboutPage } from './../pages/about/about';
 import { SearchPage } from './../pages/search/search';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -15,7 +16,8 @@ import { NewsProvider } from '../providers/news/news';
   declarations: [
     MyApp,
     HomePage,
-    SearchPage
+    SearchPage,
+    AboutPage
   ],
   imports: [
     BrowserModule, HttpClientModule,
@@ -25,7 +27,8 @@ import { NewsProvider } from '../providers/news/news';
   entryComponents: [
     MyApp,
     HomePage,
-    SearchPage
+    SearchPage,
+    AboutPage
   ],
   providers: [
     StatusBar,

@@ -41,6 +41,7 @@ sortBy="relevancy";
 
 params;
   constructor(public navCtrl: NavController, public navParams: NavParams, private newsProvider:NewsProvider, private menuCtrl:MenuController) {
+    
   }
 
   ionViewDidLoad() {

@@ -1,4 +1,21 @@
 page-home {
 
 }
+.list-ios > .item-block:first-child {
+    border-top: none;
+}
 
+.list-ios > .item-block:last-child, .list-ios > .item-wrapper:last-child .item-block {
+    border-bottom: none;
+}
+
+.list-md {
+    //margin: 50px 0 16px;
+}
+
+.websiteLink
+{
+    text-decoration: none;
+    color:#0071aa;
+    
+}

@@ -1,16 +1,17 @@
 <ion-header>
   <ion-navbar hideBackButton>
-      <ion-icon name="menu" color="dark" (click)="openMenu()" style="vertical-align: middle; line-height: 55px; font-size: 25px;float: left; padding-left: 15px"></ion-icon>
+      
     <ion-title style="text-align: center">
-  <h3>Top Headlines!</h3>
+        <ion-icon name="menu" color="dark" (click)="openMenu()" style="vertical-align: middle; line-height: 55px; font-size: 25px;float: left; padding-left: 5px"></ion-icon>
+  <h3>Top Headlines</h3>
     </ion-title>
     <!--<ion-label (click)="goToSearch()">search</ion-label>-->
   </ion-navbar>
 </ion-header>
 
-<ion-content *ngIf="newsData"  padding style="margin-top:50px">
-  <ion-list style="border-top:none">
-    <!--<ion-list-header></ion-list-header>-->
+<ion-content *ngIf="newsData" padding>
+  <ion-list style="margin-top:50px">
+    <ion-list-header style="display:none"></ion-list-header>
       <ion-item>
       <ion-label>Country</ion-label>
       <ion-select placeholder="Select country" [(ngModel)]="country" (ionChange)="onChange()">
@@ -33,7 +34,7 @@
 
     <ion-card *ngFor="let item of newsData?.articles">
      
-      <img [src]="item.urlToImage">
+      <img [src]="item.urlToImage" *ngIf="item.urlToImage">
      
         <!--<ion-item>
          <ion-icon color="secondary" name="share" slot="start"></ion-icon>
@@ -44,10 +45,12 @@
         <ion-card-content ion-margin>
                 
   
-          <ion-card-title color="success"><b>{{item.title}}</b></ion-card-title>
+          <ion-card-title><b>{{item.title}}</b></ion-card-title>
+          
+          <p style="font-size:11px; margin-top:7px">{{adjustDateTime(item.publishedAt)}}</p>
           <p>{{item.description}}</p>
-          <h6><i>{{adjustDateTime(item.publishedAt)}}</i></h6>
-          <p><a [href]="item.url" color="danger">View more details at {{item.source.name}}</a></p>
+          <p style="margin-top:7px"><a class="websiteLink" [href]="item.url"><ion-icon name="globe" style="margin-right: 5px"></ion-icon>View more details at {{item.source.name}}</a></p>
+
         </ion-card-content>
       </ion-card>
 
