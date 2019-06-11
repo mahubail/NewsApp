@@ -13,7 +13,7 @@ export class HomePage {
 
 newsData:any; //stores data from API
 country="us"; //binded to ion-select with initial value of United States country
-category="general"; //binded to ion-select with initial value of General
+category="general"; //binded to ion-select with initial value of General category
 params; //used to combine the parameters that are passed to the provider
 
 
@@ -86,7 +86,7 @@ categoryList = [
 
   constructor(public navCtrl: NavController, private newsProvider:NewsProvider, private menuCtrl:MenuController) {
 
-    //calling the provider at the loading
+    //calling the provider at loading time
     this.newsProvider.getNews("topHeadlines","country=us&category=general").subscribe(
       data=>{this.newsData=data;
         console.log(this.newsData);
