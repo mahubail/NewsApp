@@ -20,6 +20,8 @@ export class AboutPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad AboutPage');
   }
+
+  //this function used to open the side ion-menu
   openMenu() {
     this.menuCtrl.open();
   }

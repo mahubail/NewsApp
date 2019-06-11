@@ -25,12 +25,14 @@ export class MyApp {
   }
   onClick(item, page)
   {
-    item.close();
+    item.close(); //close the side ion-menu
+
+    //open the page based on the passed parameter
     if(page=="HomePage")
       this.nav.push(HomePage);
     else if(page=="SearchPage")
       this.nav.push(SearchPage);
-      else if(page=="AboutPage")
+    else if(page=="AboutPage")
       this.nav.push(AboutPage);
 
   }
