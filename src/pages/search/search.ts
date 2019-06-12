@@ -1,6 +1,6 @@
 import { NewsProvider } from './../../providers/news/news';
 import { Component } from '@angular/core';
-import { NavController, NavParams, MenuController } from 'ionic-angular';
+import { NavController, NavParams, MenuController, ToastController } from 'ionic-angular';
 
 /**
  * Generated class for the SearchPage page.
@@ -45,7 +45,7 @@ sortBy="relevancy"; //binded to ion-select with initial value of Relevant sortin
 
 params; //used to combine the parameters that are passed to the provider
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private newsProvider:NewsProvider, private menuCtrl:MenuController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private newsProvider:NewsProvider, private menuCtrl:MenuController, private toastCtrl:ToastController) {
     
   }
 
@@ -70,7 +70,22 @@ params; //used to combine the parameters that are passed to the provider
           data=>{
             this.newsData=data;
 
-          });
+          },
+            (err)=>{
+            let toast = this.toastCtrl.create(
+              {
+                message: "An error occurred while loading data. Please check your connection.",
+                duration: 3000,
+                position: "middle"
+              }
+            );
+            toast.present();
+            toast.onDidDismiss(()=>
+            {}
+            );
+          }
+          
+          );
         }
     }
   }
