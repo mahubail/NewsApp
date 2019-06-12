@@ -1,6 +1,7 @@
+
+<!-- side ion-menu to ease the navigation between pages -->
 <ion-menu persistent="true" #sideMenu [content]="mycontent" type="push" menuId="sideMenu" side="start">
     <ion-content>
-
 
       <ion-list>
           <ion-item (click)="onClick(sideMenu, 'HomePage')">
@@ -16,6 +17,7 @@
               <span ion-label color="dark">About</span>
           </ion-item>
  </ion-list>
+ 
     </ion-content>
   </ion-menu>
 <ion-nav #mycontent [root]="rootPage"></ion-nav>

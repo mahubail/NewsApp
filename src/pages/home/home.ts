@@ -89,9 +89,7 @@ categoryList = [
     //calling the provider at loading time
     this.newsProvider.getNews("topHeadlines","country=us&category=general").subscribe(
       data=>{this.newsData=data;
-        console.log(this.newsData);
-        console.log(this.newsData.articles);
-       
+             
   })
   }
 
@@ -101,9 +99,7 @@ categoryList = [
     this.params="country=" + this.country + "&category=" + this.category;
     this.newsProvider.getNews("topHeadlines", this.params).subscribe(
       data=>{this.newsData=data;
-        console.log(this.newsData);
-        console.log(this.newsData.articles);
-  
+        
   })
   }
 
