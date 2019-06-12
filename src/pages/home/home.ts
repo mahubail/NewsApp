@@ -1,7 +1,7 @@
 import { SearchPage } from './../search/search';
 import { NewsProvider } from './../../providers/news/news';
 import { Component } from '@angular/core';
-import { NavController, MenuController } from 'ionic-angular';
+import { NavController, MenuController, ToastController } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
@@ -84,13 +84,27 @@ categoryList = [
  ];
 
 
-  constructor(public navCtrl: NavController, private newsProvider:NewsProvider, private menuCtrl:MenuController) {
+  constructor(public navCtrl: NavController, private newsProvider:NewsProvider, private menuCtrl:MenuController, private toastCtrl:ToastController) {
 
     //calling the provider at loading time
     this.newsProvider.getNews("topHeadlines","country=us&category=general").subscribe(
       data=>{this.newsData=data;
              
-  })
+  },
+    (err)=>{
+      let toast = this.toastCtrl.create(
+        {
+          message: "An error occurred while loading data. Please check your connection.",
+          duration: 3000,
+          position: "middle"
+        }
+      );
+      toast.present();
+      toast.onDidDismiss(()=>
+      {}
+      );
+    }
+  )
   }
 
   //if any option change (country or category), params are passed to the provider to refresh the newsData
