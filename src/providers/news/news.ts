@@ -17,6 +17,8 @@ This API is from newsapi.org and two features are used:
 2. Search for any word and articles are viewed from many news resources and with two options which user can specify: Language and Sort
 
 There are two URLs one is used for the Top Headlines articles and the other is used for searching.
+
+Note: Maximum number of articles viewed in Top Headlines and Search pages are 20.
 */
   topHeadlinesUrl="https://newsapi.org/v2/top-headlines?";
   searchUrl="https://newsapi.org/v2/everything?";
