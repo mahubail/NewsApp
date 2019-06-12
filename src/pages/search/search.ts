@@ -69,23 +69,18 @@ params; //used to combine the parameters that are passed to the provider
         this.newsProvider.getNews("search", this.params).subscribe(
           data=>{
             this.newsData=data;
-
+                        
           },
             (err)=>{
-            let toast = this.toastCtrl.create(
-              {
-                message: "An error occurred while loading data. Please check your connection.",
-                duration: 3000,
-                position: "middle"
-              }
-            );
-            toast.present();
-            toast.onDidDismiss(()=>
-            {}
-            );
-          }
+              this.showToast("An error occurred while loading data. Please check your connection.");
+                    }
           
           );
+        }
+        else // space
+        {
+          this.newsData = null;
+         
         }
     }
   }
@@ -106,4 +101,20 @@ params; //used to combine the parameters that are passed to the provider
   {
     this.menuCtrl.open();
   }
+
+showToast(msg:string)
+{
+  let toast = this.toastCtrl.create(
+    {
+      message: msg,
+      duration: 3000,
+      position: "middle"
+    }
+  );
+  toast.present();
+  toast.onDidDismiss(()=>
+  {}
+  );
+}
+
 }
