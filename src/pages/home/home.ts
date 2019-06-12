@@ -88,9 +88,9 @@ categoryList = [
 
     //calling the provider at loading time
     this.newsProvider.getNews("topHeadlines","country=us&category=general").subscribe(
-      data=>{this.newsData=data;
-             
-  },
+      data=>{
+        this.newsData=data;
+    },
     (err)=>{
       let toast = this.toastCtrl.create(
         {
