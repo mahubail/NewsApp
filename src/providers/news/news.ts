@@ -32,12 +32,10 @@ There are two URLs one is used for the Top Headlines articles and the other is u
   */
   getNews(newsType, params)
   {
-    console.log("getNews param:" + newsType);
-    console.log("getNews param:" + params);
+    
     if(newsType=="topHeadlines")
     {
-      console.log(this.topHeadlinesUrl+ params + this.apiKey);
-      //return "";
+      
       return this.http.get(this.topHeadlinesUrl+ params + this.apiKey);
     }
     else if(newsType=="search")

@@ -64,12 +64,13 @@ params; //used to combine the parameters that are passed to the provider
     
       if(this.searchValue.trim() != "")
       {
-        console.log(this.searchValue);
+       
         this.params="q=" + this.searchValue + "&language=" + this.language + "&sortBy=" + this.sortBy;
         this.newsProvider.getNews("search", this.params).subscribe(
-          data=>{this.newsData=data;
-            console.log(this.newsData);
-            console.log(this.newsData.articles)});
+          data=>{
+            this.newsData=data;
+
+          });
         }
     }
   }
