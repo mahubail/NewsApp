@@ -22,7 +22,9 @@ Note: Maximum number of articles viewed in Top Headlines and Search pages are 20
 */
   topHeadlinesUrl="https://newsapi.org/v2/top-headlines?";
   searchUrl="https://newsapi.org/v2/everything?";
-  apiKey="&apiKey=8611252c534648fb8ce7be2cc3472f78";
+  //apiKey="&apiKey=8611252c534648fb8ce7be2cc3472f78";
+  apiKey="&apiKey=7fb29ee2f5ba45ffac15bc7dc3c6417b";
+  
 
 
   constructor(public http: HttpClient) {

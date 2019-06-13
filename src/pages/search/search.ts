@@ -104,6 +104,7 @@ params; //used to combine the parameters that are passed to the provider
 
 showToast(msg:string)
 {
+  
   let toast = this.toastCtrl.create(
     {
       message: msg,
