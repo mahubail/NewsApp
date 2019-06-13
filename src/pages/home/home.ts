@@ -11,7 +11,7 @@ import { NavController, MenuController, ToastController } from 'ionic-angular';
 export class HomePage {
 
 
-newsData:any; //stores data from API
+newsData:any; //stores data from provider
 country="us"; //binded to ion-select with initial value of United States country
 category="general"; //binded to ion-select with initial value of General category
 params; //used to combine the parameters that are passed to the provider

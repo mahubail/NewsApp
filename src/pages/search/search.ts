@@ -16,7 +16,7 @@ import { NavController, NavParams, MenuController, ToastController } from 'ionic
 export class SearchPage {
 
 searchValue:string; //holds the keywords entered by the user
-newsData:any; //stores data from API
+newsData:any; //stores data from provider
 
 
 languageList=[
