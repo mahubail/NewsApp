@@ -16,22 +16,18 @@
 <ion-content padding>
   <!-- This page will show articles based on a search result -->
  <ion-list>
+
+    <ion-item>
+        <ion-label>Topic</ion-label>
+        <ion-select [(ngModel)]="topic" (ionChange)="doSearch2()" style="min-width: 75%">
+          <ion-option *ngFor="let tpc of topicList.sort(this.sortByProperty('name'))" value="{{tpc.val}}">{{tpc.name}}</ion-option>
+        </ion-select>
+        </ion-item>
     
-  <!-- ion-search component will holds the search keywords and it is binded to searchValue variable-->
-    <ion-searchbar show-cancel-button="true" cancelButtonText="Custom Cancel" placeholder="search..." animated="true" (ionChange)="doSearch()" [(ngModel)]="searchValue" ></ion-searchbar>
 
-<!-- This ion-select is used to choose the language of search results articles and it is binded with language variable. Languages are loaded by ngFor directive from languageList variable.   -->
-      <ion-item>
-      <ion-label>Language</ion-label>
-      <ion-select placeholder="Select country" [(ngModel)]="language" (ionChange)="doSearch()">
-        <ion-option *ngFor="let lng of languageList" value="{{lng.val}}">{{lng.name}}</ion-option>
-      </ion-select>
-      </ion-item>
-
-      <!-- This ion-select is used to choose the sorting option of search results articles and it is binded with sortBy variable. Sorting options are loaded by ngFor directive from sortByList variable.   -->
       <ion-item>
         <ion-label>Sort by</ion-label>
-        <ion-select placeholder="Sort by" [(ngModel)]="sortBy" (ionChange)="doSearch()">
+        <ion-select placeholder="Sort by" [(ngModel)]="sortBy" (ionChange)="doSearch2()" style="min-width: 75%">
           <ion-option *ngFor="let srt of sortByList" value="{{srt.val}}">{{srt.name}}</ion-option>
         </ion-select>
         </ion-item>

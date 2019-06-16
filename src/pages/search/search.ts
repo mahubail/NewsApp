@@ -16,6 +16,19 @@ import { NavController, NavParams, MenuController, ToastController } from 'ionic
 export class SearchPage {
 
 searchValue:string; //holds the keywords entered by the user
+topic;
+
+topicList=[
+{"name":"Augmented Reality (AR)","val":"(\"augmented reality\" OR AR)"},
+{"name":"Cloud Computing","val":"cloud computing"},
+{"name":"Bitcoin","val":"bitcoin"},
+{"name":"Internet of Things (IoT)","val":"(\"internet of things\" OR IoT)"},
+{"name":"Data Mining","val":"\"data mining\""},
+{"name":"Virtual Reality (VR)","val":"(\"virtual reality\" OR VR)"},
+{"name":"Automation","val":"automation"},
+{"name":"Artificial Intelligence (AI)","val":"(\"artificial intelligence\" OR AI)"},
+{"name":"Blockchain","val":"blockchain"}
+];
 newsData:any; //stores data from provider
 
 
@@ -51,11 +64,47 @@ params; //used to combine the parameters that are passed to the provider
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SearchPage');
+    console.log(this.topicList.sort(this.sortByProperty('name')));
+    
   }
 
+  sortByProperty = function (property) {
+    return function (x, y) {
+        return ((x[property] === y[property]) ? 0 : ((x[property] > y[property]) ? 1 : -1));
+    };
+};
   /* this function will be called in case search value, language, or sorting option changed.
   it will load data from the news provider.
   */
+ doSearch2()
+ {
+   if(this.topic != null)
+   {
+     //this.searchValue = this.searchValue.trim();
+   
+     if(this.topic.trim() != "")
+     {
+      
+       this.params="q=" + this.topic + "&language=en&sortBy=" + this.sortBy;
+       this.newsProvider.getNews("search", this.params).subscribe(
+         data=>{
+           this.newsData=data;
+                       
+         },
+           (err)=>{
+             this.showToast("An error occurred while loading data. Please check your connection.");
+                   }
+         
+         );
+       }
+       else // space
+       {
+         this.newsData = null;
+        
+       }
+   }
+ }
+
   doSearch()
   {
     if(this.searchValue != null)
