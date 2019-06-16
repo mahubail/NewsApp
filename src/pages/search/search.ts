@@ -64,7 +64,6 @@ params; //used to combine the parameters that are passed to the provider
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SearchPage');
-    console.log(this.topicList.sort(this.sortByProperty('name')));
     
   }
 
