@@ -76,7 +76,7 @@ params; //used to combine the parameters that are passed to the provider
   /* this function will be called in case search value, language, or sorting option changed.
   it will load data from the news provider.
   */
- doSearch2()
+ doSearch()
  {
    if(this.topic != null)
    {
@@ -105,34 +105,7 @@ params; //used to combine the parameters that are passed to the provider
    }
  }
 
-  doSearch()
-  {
-    if(this.searchValue != null)
-    {
-      //this.searchValue = this.searchValue.trim();
-    
-      if(this.searchValue.trim() != "")
-      {
-       
-        this.params="q=" + this.searchValue + "&language=" + this.language + "&sortBy=" + this.sortBy;
-        this.newsProvider.getNews("search", this.params).subscribe(
-          data=>{
-            this.newsData=data;
-                        
-          },
-            (err)=>{
-              this.showToast("An error occurred while loading data. Please check your connection.");
-                    }
-          
-          );
-        }
-        else // space
-        {
-          this.newsData = null;
-         
-        }
-    }
-  }
+ 
 
   languageChange()
   {
