@@ -15,7 +15,7 @@
 <!-- This ion-select is used to choose the country and it is binded with country variable. Countries name are loaded by ngFor directive from countryList variable.   -->
       <ion-item>
       <ion-label>Country</ion-label>
-      <ion-select placeholder="Select country" [(ngModel)]="country" (ionChange)="onChange()">
+      <ion-select placeholder="Select country" [(ngModel)]="country" (ionChange)="onChange()" style="min-width: 75%">
         <ion-option *ngFor="let ctr of countryList" value="{{ctr.val}}">{{ctr.name}}</ion-option>
       </ion-select>
     </ion-item>
@@ -23,7 +23,7 @@
     <!-- This ion-select is used to choose the category and it is binded with category variable. Categories name are loaded by ngFor directive from categoryList variable.   -->
     <ion-item>
         <ion-label>Category</ion-label>
-        <ion-select placeholder="Select category" [(ngModel)]="category" (ionChange)="onChange()">
+        <ion-select placeholder="Select category" [(ngModel)]="category" (ionChange)="onChange()" style="min-width: 75%">
           <ion-option *ngFor="let ctg of categoryList"  value="{{ctg.val}}">{{ctg.name}}</ion-option>
         </ion-select>
     </ion-item>

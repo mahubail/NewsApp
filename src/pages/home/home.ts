@@ -13,7 +13,7 @@ export class HomePage {
 
 newsData:any; //stores data from provider
 country="us"; //binded to ion-select with initial value of United States country
-category="general"; //binded to ion-select with initial value of General category
+category="technology"; //binded to ion-select with initial value of Technology category
 params; //used to combine the parameters that are passed to the provider
 
 
@@ -74,7 +74,6 @@ countryList = [
 ];
 
 categoryList = [
-  {"name":"General","val":"general"},
   {"name":"Business","val":"business"},
   {"name":"Entertainment", "val":"entertainment"},
   {"name":"Health", "val":"health"},
@@ -87,7 +86,7 @@ categoryList = [
   constructor(public navCtrl: NavController, private newsProvider:NewsProvider, private menuCtrl:MenuController, private toastCtrl:ToastController) {
 
     //calling the provider at loading time
-    this.newsProvider.getNews("topHeadlines","country=us&category=general").subscribe(
+    this.newsProvider.getNews("topHeadlines","country="+this.country+"&category="+this.category).subscribe(
       data=>{
         this.newsData=data;
     },
